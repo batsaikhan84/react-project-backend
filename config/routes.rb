@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'static#home'
-  post '/sessions', to: 'session#create'
-  post '/registrations', to: 'users#create'
+  resources :sessions, only: [:create]
+  resources :users, only: [:create]
   get '/logout', to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"
+  root to: "static#home"
 end
