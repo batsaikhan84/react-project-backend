@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'static#home'
+  post '/sessions', to: 'session#create'
+  post '/registrations', to: 'users#create'
+  get '/logout', to: "sessions#logout"
+  get :logged_in, to: "sessions#logged_in"
 end
